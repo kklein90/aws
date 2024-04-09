@@ -1,7 +1,14 @@
 import boto3
-import inquirer
 import subprocess
 
+try:
+    import inquirer
+except ModuleNotFoundError as e:
+    print("this script requires the inquirer python module")
+    exit()
+
+
+## todo - build list of service names dynamically
 questions = [
     inquirer.List('service',
                   message="Which service to connect to?",
