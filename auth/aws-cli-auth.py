@@ -7,11 +7,11 @@ import argparse
 
 VERSION = '1.1.0'
 HOME_DIR = os.path.expanduser("~")
-MGMT_ACCOUNT = "777764040422"
-PROD_ACCOUNT = "380735047240"
-DEV_ACCOUNT = "228923425684"
-STAGE_ACCOUNT = "464677946080"
-SSO_URL = "https://d-90678de24a.awsapps.com/start"
+MGMT_ACCOUNT = "mgmt-accnt"
+PROD_ACCOUNT = "prod-accnt"
+DEV_ACCOUNT = "dev-accnt"
+STAGE_ACCOUNT = "stage-accnt"
+SSO_URL = "login-url"
 MGMT_ROLE_NAME = "AdministratorAccess"
 STAGE_ROLE_NAME = "AdministratorAccess"
 PROD_ROLE_NAME = "AdministratorAccess"
