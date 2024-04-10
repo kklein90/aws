@@ -7,29 +7,29 @@ except ModuleNotFoundError as e:
     print("this script requires the inquirer python module")
     exit()
 
-
-## todo - build list of service names dynamically
-questions = [
-    inquirer.List('service',
-                  message="Which service to connect to?",
-                  choices=['egateway', 'lender-ms', 'lender-web', 'macro-api','nginx', 'portal-web-dev', 'readiness-ms']
-                  ),
-]
-
-svc_conn = inquirer.prompt(questions)
-
 client=boto3.client('ecs')
 
+## generate list of existing services
 # find cluster name
 cluster_arn = client.list_clusters(maxResults=1)
 cluster_name = cluster_arn['clusterArns'][0].split('/')[1]
 
-## find service names - aws ecs list-services --cluster asterkey-cluster-01-development
-# services = client.list_services(cluster=cluster_name, maxResults=10)
-# for svc in services['serviceArns']:
-#     last = len(svc.split("/"))
-#     print(svc.split("/")[last - 1])
+# list services on cluster
+svc_list = []
+services = client.list_services(cluster=cluster_name, maxResults=10)
+for svc in services['serviceArns']:
+    last = len(svc.split("/"))
+    svc_list.append(svc.split("/")[last - 1][:15])
 
+# prompt user
+questions = [
+    inquirer.List('service',
+                  message="Which service to connect to?",
+                  choices = svc_list
+                  ),
+]
+
+svc_conn = inquirer.prompt(questions)
 
 # find taskId
 ## need family names to find task id services
