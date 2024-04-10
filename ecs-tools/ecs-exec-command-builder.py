@@ -35,6 +35,7 @@ svc_conn = inquirer.prompt(questions)
 ## need family names to find task id services
 families = client.list_task_definition_families(familyPrefix=svc_conn['service'])
 
+# won't work for tasks with only 1 container
 for family in families['families']:
     tasks = client.list_tasks(cluster=cluster_name, family=family) # retuns taskArns
     task_id = tasks['taskArns'][0].split('/')[2]
