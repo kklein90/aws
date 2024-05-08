@@ -1,6 +1,14 @@
 import boto3
 import subprocess
 
+'''
+exec into an ecs container
+multi-profile aware
+generate list of running tasks
+present list of to choose from
+run aws cmd as subprocess
+'''
+
 try:
     import argparse
 except ModuleNotFoundError as e:
