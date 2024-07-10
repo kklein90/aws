@@ -7,11 +7,14 @@ import argparse
 
 VERSION = '1.1.0'
 HOME_DIR = os.path.expanduser("~")
+# change these to the account numbers
 MGMT_ACCOUNT = "mgmt-accnt"
 PROD_ACCOUNT = "prod-accnt"
 DEV_ACCOUNT = "dev-accnt"
 STAGE_ACCOUNT = "stage-accnt"
+# change this to the SSO login URL
 SSO_URL = "login-url"
+# change these to the role names in each account
 MGMT_ROLE_NAME = "AdministratorAccess"
 STAGE_ROLE_NAME = "AdministratorAccess"
 PROD_ROLE_NAME = "AdministratorAccess"
